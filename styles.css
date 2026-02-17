@@ -1,0 +1,197 @@
+:root {
+  --bg-1: #f0e7d9;
+  --bg-2: #c7d6e8;
+  --panel: rgba(253, 248, 240, 0.88);
+  --ink: #101010;
+  --accent: #174a72;
+  --accent-strong: #0d3556;
+  --line: #d6cbbb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Gill Sans", "Avenir Next", "Trebuchet MS", sans-serif;
+  color: #202124;
+  background:
+    radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.42), transparent 42%),
+    radial-gradient(circle at 86% 78%, rgba(255, 255, 255, 0.38), transparent 45%),
+    linear-gradient(135deg, var(--bg-1), var(--bg-2));
+}
+
+.app {
+  width: min(1180px, 96vw);
+  margin: 2rem auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 320px 1fr;
+}
+
+.controls {
+  border: 1px solid rgba(20, 20, 20, 0.1);
+  border-radius: 16px;
+  padding: 1rem;
+  background: var(--panel);
+  backdrop-filter: blur(2px);
+  box-shadow: 0 10px 30px rgba(19, 28, 40, 0.12);
+}
+
+h1 {
+  margin: 0 0 0.8rem;
+  letter-spacing: 0.02em;
+  font-size: 1.35rem;
+}
+
+.control {
+  display: grid;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+}
+
+.control > span {
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+select,
+input[type="range"],
+button,
+input[type="color"] {
+  font: inherit;
+}
+
+select {
+  border: 1px solid rgba(23, 74, 114, 0.2);
+  border-radius: 10px;
+  padding: 0.45rem 0.5rem;
+  background: #fefcf8;
+}
+
+.tool-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem;
+}
+
+.tool {
+  border-radius: 10px;
+  border: 1px solid #c3ccd6;
+  background: #fafcfe;
+  padding: 0.45rem 0.55rem;
+  cursor: pointer;
+}
+
+.tool.active {
+  border-color: var(--accent);
+  background: #dce9f5;
+}
+
+.color-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.swatch {
+  border: 2px solid rgba(30, 30, 30, 0.18);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--swatch);
+  cursor: pointer;
+}
+
+.swatch.active {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+#customColor {
+  width: 38px;
+  height: 28px;
+  border: 1px solid rgba(30, 30, 30, 0.25);
+  border-radius: 7px;
+  background: #fff;
+  cursor: pointer;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+.action-row {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.action-row button {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 0.55rem;
+  cursor: pointer;
+}
+
+.action-row .secondary {
+  background: #ece8e0;
+  border-color: #d5cdc1;
+}
+
+.action-row .primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.action-row .primary:hover {
+  background: var(--accent-strong);
+}
+
+#statusMessage {
+  min-height: 1.3em;
+  margin: 0.55rem 0 0;
+  font-size: 0.9rem;
+  color: #173a5a;
+}
+
+.canvas-wrap {
+  display: flex;
+  align-items: stretch;
+}
+
+.board {
+  width: 100%;
+  min-height: 66vh;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(14, 14, 14, 0.16);
+  box-shadow: 0 14px 34px rgba(16, 22, 32, 0.2);
+  position: relative;
+  background: #fefcf8;
+}
+
+canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#drawCanvas {
+  touch-action: none;
+  cursor: crosshair;
+}
+
+@media (max-width: 980px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+
+  .board {
+    min-height: 52vh;
+  }
+}

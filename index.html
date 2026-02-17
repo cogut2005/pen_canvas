@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pen Canvas</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="controls" aria-label="Drawing controls">
+        <h1>Pen Canvas</h1>
+
+        <label class="control">
+          <span>Paper</span>
+          <select id="paperType">
+            <option value="blank">Blank</option>
+            <option value="squared">Squared</option>
+            <option value="lined">Lined</option>
+          </select>
+        </label>
+
+        <label class="control">
+          <span>Pen style</span>
+          <select id="penStyle">
+            <option value="fine">Fine</option>
+            <option value="marker">Marker</option>
+            <option value="brush">Brush</option>
+          </select>
+        </label>
+
+        <div class="control">
+          <span>Tool</span>
+          <div class="tool-row">
+            <button id="penTool" class="tool active" type="button">Pen</button>
+            <button id="eraserTool" class="tool" type="button">Eraser</button>
+          </div>
+        </div>
+
+        <label class="control">
+          <span>Pen color</span>
+          <div class="color-row">
+            <button type="button" class="swatch" data-color="#101010" style="--swatch:#101010"></button>
+            <button type="button" class="swatch" data-color="#0f4c81" style="--swatch:#0f4c81"></button>
+            <button type="button" class="swatch" data-color="#b42318" style="--swatch:#b42318"></button>
+            <button type="button" class="swatch" data-color="#2e7d32" style="--swatch:#2e7d32"></button>
+            <input id="customColor" type="color" value="#101010" aria-label="Custom pen color" />
+          </div>
+        </label>
+
+        <label class="control">
+          <span id="penSizeLabel">Pen size: 4</span>
+          <input id="penSize" type="range" min="1" max="28" value="4" />
+        </label>
+
+        <label class="control">
+          <span id="eraserSizeLabel">Eraser size: 22</span>
+          <input id="eraserSize" type="range" min="4" max="80" value="22" />
+        </label>
+
+        <div class="action-row">
+          <button id="clearCanvas" class="secondary" type="button">Clear writing</button>
+          <button id="copyCanvas" class="primary" type="button">Copy transparent PNG</button>
+        </div>
+        <p id="statusMessage" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="canvas-wrap" aria-label="Writing area">
+        <div id="board" class="board">
+          <canvas id="paperCanvas"></canvas>
+          <canvas id="drawCanvas"></canvas>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
